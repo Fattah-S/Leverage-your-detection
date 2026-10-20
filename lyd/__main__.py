@@ -5,6 +5,8 @@
     python3 -m lyd serve                      web dashboard on http://127.0.0.1:8765
     python3 -m lyd chat                       chat in the terminal (or --ask "question")
     python3 -m lyd advisory                   write the monthly use-case advisory
+    python3 -m lyd report                     status report of the current situation, now
+    python3 -m lyd schedule --every weekly --day sun --at 08:00     reports on a schedule (any OS)
     python3 -m lyd prs open [--live]          proposals -> GitHub pull requests (dry run by default)
     python3 -m lyd prs sync                   merged / closed pull requests -> decisions
     python3 -m lyd routes                     which agent listens to which event
@@ -50,6 +52,8 @@ def cmd_demo(args) -> None:
               "event flow works end to end; it does not measure detection quality.")
     (p.out / "run-trace.md").write_text(write_trace(p.bus, p.orch.routing_table(), header), encoding="utf-8")
     write_advisory(p)
+    from . import status
+    status.write(p)
     p.save()
     print(f"Agents: {', '.join(n.name for n in p.orch.nodes)}")
     print(f"Events processed: {len(p.bus.all())}")
@@ -59,7 +63,7 @@ def cmd_demo(args) -> None:
     for pr in p.ctx.proposals.values():
         status[pr["status"]] = status.get(pr["status"], 0) + 1
     print("Proposals: " + ", ".join(f"{v} {k.replace('_', ' ')}" for k, v in sorted(status.items())))
-    print(f"Outputs in {p.out}: run-trace.md, week-1/report.md, week-2/report.md, monthly-advisory.md")
+    print(f"Outputs in {p.out}: run-trace.md, week-1/report.md, week-2/report.md, monthly-advisory.md, status report")
     print(f"Next: {PY} -m lyd serve   (dashboard)   or   {PY} -m lyd chat")
 
 
@@ -82,6 +86,19 @@ def cmd_advisory(args) -> None:
     p = platform(args)
     f = write_advisory(p, args.period)
     print(f.read_text(encoding="utf-8"))
+
+
+def cmd_report(args) -> None:
+    from . import status
+    p = platform(args)
+    path = status.write(p)
+    print(f"Report written: {path}")
+    print("It also appears in the dashboard under Weekly reports.")
+
+
+def cmd_schedule(args) -> None:
+    from . import status
+    status.run_schedule(lambda: platform(args), args.every, args.at, args.day)
 
 
 def cmd_prs(args) -> None:
@@ -135,6 +152,14 @@ def main() -> None:
     a = common(sub.add_parser("advisory", help="monthly use-case advisory"))
     a.add_argument("--period", default="October 2026")
     a.set_defaults(func=cmd_advisory)
+    rp = common(sub.add_parser("report", help="status report of the current situation"))
+    rp.set_defaults(func=cmd_report)
+    sc = common(sub.add_parser("schedule", help="write status reports on a schedule (any OS)"))
+    sc.add_argument("--every", choices=["daily", "weekly"], default="weekly")
+    sc.add_argument("--day", choices=["mon", "tue", "wed", "thu", "fri", "sat", "sun"], default="mon",
+                    help="day for weekly reports")
+    sc.add_argument("--at", default="08:00", help="time of day, 24h HH:MM, local time")
+    sc.set_defaults(func=cmd_schedule)
     g = common(sub.add_parser("prs", help="GitHub pull requests"))
     g.add_argument("action", choices=["open", "sync"])
     g.add_argument("--repo", default="Fattah-S/Leverage-your-detection")

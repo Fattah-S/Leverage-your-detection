@@ -22,7 +22,7 @@ HELP = """I can answer from the platform's data:
 - "why was PR-009 rejected?" or "explain PR-007"
 - "which rules are noisy?", "any broken rules?"
 - "tell me about T1003.001"
-- "what changed this week?"
+- "what changed this week?" or "write a status report"
 Anything else, I search the platform's memory."""
 
 
@@ -65,6 +65,10 @@ class Chat:
         m = re.search(rf"\b({TID})\b", q, re.I)
         if m:
             return self.technique(m.group(1).upper())
+        if re.search(r"\b(status report|write (a )?report|new report)\b", low):
+            from . import status
+            path = status.write(self.p)
+            return f"Status report written: {path}. " + self.latest_report()
         if re.search(r"\b(report|this week|changed|summary)\b", low):
             return self.latest_report()
         return self.search(q)
@@ -208,7 +212,8 @@ class Chat:
                 f"Proposals: {', '.join(props) or 'none'}.")
 
     def latest_report(self) -> str:
-        weeks = sorted(d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists())
+        weeks = sorted((d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists()),
+                       key=lambda n: (self.p.out / n / "report.md").stat().st_mtime)
         if not weeks:
             return "No weekly report yet."
         text = (self.p.out / weeks[-1] / "report.md").read_text(encoding="utf-8")

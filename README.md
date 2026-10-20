@@ -50,9 +50,11 @@ Use `python3` on macOS and `py` on Windows.
 | `-m lyd serve` | Dashboard: coverage, review queue (approve / reject with a reason), reports, advisory, run trace, chat |
 | `-m lyd chat` | Chat in the terminal; `--ask "question"` for one answer |
 | `-m lyd advisory` | Writes the monthly use-case advisory |
+| `-m lyd report` | Writes a status report of the current situation now |
+| `-m lyd schedule --every weekly --day sun --at 08:00` | Writes status reports on a schedule, on any OS (see below) |
 | `-m lyd prs open` | Previews pull requests for proposals waiting for review; add `--live` to really open them |
 | `-m lyd prs sync` | Merged pull requests become merges, closed ones become rejections with your comment as the reason |
-| `-m unittest -v` | 30 end-to-end tests |
+| `-m unittest -v` | 36 end-to-end tests |
 
 `demo` resets `docs/demo/`. To keep a clean copy of the committed demo, copy `docs/demo` to another folder and pass it with `--out <folder>` to `serve` or `chat`.
 
@@ -64,6 +66,30 @@ Install [Ollama](https://ollama.com/download) (installers for macOS and Windows)
 ollama pull llama3.2
 python3 -m lyd serve --llm ollama --model llama3.2      # Windows: py -m lyd serve --llm ollama --model llama3.2
 ```
+
+### Scheduled status reports (any host)
+
+A status report covers the current situation: coverage and its change since the last report, proposals waiting for review, decisions made since then, recommended next use cases, and log sources to onboard. Numbers come from code; the LLM writes the summary. Each report is saved in `docs/demo/status-YYYY-MM-DD/` with a Navigator layer, and appears in the dashboard under **Reports** (newest first). You can also ask the chat: "write a status report".
+
+**Option 1: built-in scheduler (macOS, Windows, Linux, servers, containers)**. Nothing else to set up; keep the window or service running:
+
+```bash
+python3 -m lyd schedule --every weekly --day sun --at 08:00             # macOS / Linux
+py -m lyd schedule --every weekly --day sun --at 08:00                  # Windows
+python3 -m lyd schedule --every daily --at 07:30 --llm ollama           # daily, with the local LLM
+```
+
+If the computer was asleep at the scheduled time, the report is written as soon as it wakes up.
+
+**Option 2: the operating system's own scheduler** (runs even when no window is open; uses `-m lyd report`):
+
+| OS | How |
+| --- | --- |
+| macOS / Linux (cron) | Run `crontab -e` and add a line such as `0 8 * * 0 cd /full/path/to/Leverage-your-detection && /usr/bin/python3 -m lyd report` (every Sunday 08:00). Use `which python3` for the Python path. |
+| Windows (Task Scheduler) | Open **Task Scheduler → Create Basic Task**, choose **Weekly**, action **Start a program**: Program `py`, Arguments `-m lyd report`, **Start in** = the full path of the `Leverage-your-detection` folder. |
+| Linux server | A cron line as above, or a systemd timer that runs the same command. |
+
+Add `--llm ollama` to the command if the local model should write the summary (Ollama must be running at that time).
 
 ### Chat
 
@@ -115,6 +141,7 @@ Priority coverage (techniques used by the profile's threat groups, MITRE ATT&CK 
 | Memory | Decisions with reasons + TF-IDF search over techniques, use cases, proposals, intel and reports |
 | Chatbot | Built (terminal and dashboard) |
 | Weekly report, Navigator layer, monthly advisory | Built |
+| Status reports on demand or on a schedule (any OS) | Built |
 | GitHub pull requests | Built (open and sync); tested against a simulated GitHub API |
 | LLM | Mock by default; local Ollama supported |
 | Detection logic, Sigma conversion, replay tests | Not built |

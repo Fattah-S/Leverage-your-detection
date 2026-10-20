@@ -27,6 +27,12 @@ class MockLLM:
             first = f" The top recommendation is {facts['first']}." if facts.get("first") else ""
             return (f"For {facts['period']}, {facts['open_gaps']} priority gaps are ranked; "
                     f"the {facts['recommended']} highest are recommended below.{first}")
+        if task == "status_summary":
+            prev = (f", from {facts['previous_pct']}% at the last report" if facts.get("previous_pct") is not None else "")
+            top = f" The top recommended gap is {facts['top_gap']}." if facts.get("top_gap") else ""
+            return (f"As of {facts['date']}, priority coverage is {facts['coverage_pct']}% "
+                    f"({facts['covered']} of {facts['priority']}){prev}. {facts['waiting_review']} proposals are waiting "
+                    f"for review and {facts['decisions_since_last']} decision(s) were made since the last report.{top}")
         if task == "chat_answer":
             return facts["answer"]
         return json.dumps(facts)

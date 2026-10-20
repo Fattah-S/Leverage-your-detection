@@ -103,7 +103,7 @@ class App:
 
     def page(self, title: str, body: str, active: str = "", mermaid: bool = False) -> str:
         nav = "".join(f'<a href="{u}" class="{"on" if active == u else ""}">{n}</a>' for u, n in
-                      [("/", "Overview"), ("/reports", "Weekly reports"), ("/advisory", "Monthly advisory"),
+                      [("/", "Overview"), ("/reports", "Reports"), ("/advisory", "Monthly advisory"),
                        ("/trace", "Run trace"), ("/chat", "Chat")])
         script = ('<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>'
                   '<script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:'
@@ -166,14 +166,17 @@ class App:
         return self.page("Overview", "".join(b), "/")
 
     def reports(self, week: str | None) -> str:
-        weeks = sorted(d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists())
+        weeks = sorted((d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists()),
+                       key=lambda n: (self.p.out / n / "report.md").stat().st_mtime)
         if week and week in weeks:
             text = (self.p.out / week / "report.md").read_text(encoding="utf-8")
             body = (f"<p class=note><a href='/reports'>All reports</a> · <a href='/layer?week={esc(week)}'>Download Navigator layer</a> "
                     f"(open it in the <a href='https://mitre-attack.github.io/attack-navigator/'>ATT&amp;CK Navigator</a>)</p>" + md(text))
             return self.page(week, body, "/reports")
-        items = "".join(f"<li><a href='/reports?week={esc(w)}'>{esc(w)}</a></li>" for w in weeks) or "<li>No reports yet.</li>"
-        return self.page("Weekly reports", f"<h1>Weekly reports</h1><ul>{items}</ul>", "/reports")
+        items = "".join(f"<li><a href='/reports?week={esc(w)}'>{esc(w)}</a></li>" for w in reversed(weeks)) or "<li>No reports yet.</li>"
+        return self.page("Reports", "<h1>Reports</h1><p class=note>Newest first. Weekly reports come from agent runs; "
+                         "status reports from <code>-m lyd report</code> or the scheduler.</p>"
+                         f"<ul>{items}</ul>", "/reports")
 
     def advisory_page(self) -> str:
         return self.page("Monthly advisory", md(advisory.markdown(self.p.ctx, "this month")), "/advisory")

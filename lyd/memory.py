@@ -6,6 +6,7 @@ so a use case rejected before is not proposed again.
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 
@@ -17,7 +18,7 @@ class Memory:
             self.items = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
     def add(self, kind: str, **fields) -> None:
-        item = {"kind": kind, **fields}
+        item = {"kind": kind, "at": datetime.now().isoformat(timespec="seconds"), **fields}
         self.items.append(item)
         if self.path:
             self.path.parent.mkdir(parents=True, exist_ok=True)
