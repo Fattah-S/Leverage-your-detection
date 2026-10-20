@@ -262,7 +262,12 @@ def make_handler(app: App):
 
 def serve(platform: Platform, port: int = 8765) -> None:
     app = App(platform)
-    server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(app))
+    try:
+        server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(app))
+    except OSError:
+        print(f"Port {port} is already in use: the dashboard is probably already running in another window.\n"
+              f"Open http://127.0.0.1:{port} in your browser, or start another copy with --port {port + 1}.")
+        return
     print(f"Dashboard: http://127.0.0.1:{port}  (Ctrl+C to stop)")
     try:
         server.serve_forever()
