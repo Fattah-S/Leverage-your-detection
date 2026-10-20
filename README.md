@@ -149,6 +149,43 @@ In every node, **code does what must be exact** (counts, scores, tests) and **th
 
 Nodes never call each other. Each node emits events (`new_ttp`, `gap`, `noisy_rule`, `broken_rule`, `rule_merged`) and an orchestrator routes each event to the node that handles it. New nodes can be added without changing the others.
 
+## How the program works
+
+Three layers:
+
+| Layer | What it is | In the code |
+| --- | --- | --- |
+| **1. Inputs** | Your organisation profile, use-case library, threat intel, alert statistics, and engineer decisions | `config/`, `samples/`, decisions from the front ends |
+| **2. Engine** | The orchestrator and event bus run the eight agents; all agents read and write one shared state and memory; the LLM is called only where text is needed | `lyd/orchestrator.py`, `lyd/bus.py`, `lyd/nodes/`, `lyd/platform.py`, `lyd/memory.py`, `lyd/rag.py`, `lyd/llm.py` |
+| **3. Front ends** | Dashboard, chat and GitHub pull requests. They **read** the shared state to show results, and **send** your requests and decisions into the orchestrator as events | `lyd/web.py`, `lyd/chat.py`, `lyd/github_pr.py` |
+
+The dashboard is not inside the orchestrator: it sits next to it, as the window onto the engine and its control panel. "Build a use case for T1204.001" in chat, or **Approve** in the review queue, becomes an event the agents handle exactly like scheduled work.
+
+### Inputs: one set of files for all agents
+
+Files are loaded once into the shared state; the orchestrator then passes work between agents as events. Replace the placeholder files with your own data.
+
+| File | Holds | Used by |
+| --- | --- | --- |
+| `config/profile.json` | Sector, region, threat groups (ATT&CK group IDs), log sources you collect, techniques with no visibility, thresholds | All agents |
+| `samples/use_cases.json` | Your use cases: ID, name, ATT&CK techniques, log source, owner, status, validated or not | Coverage, rule health, validation |
+| `samples/intel.json` | Technique advisories (sector, region, groups, technique IDs) and exposure items (leaked accounts) | Threat intel |
+| `samples/alert_stats.json` | Per use case and week: alert volume, share closed as false positive, dominant alert pattern | Noise tuning |
+| `config/review_policy.json` | Plays the engineer in unattended demos only | Engineer review (auto mode) |
+
+### Where the LLM is used
+
+The LLM handles language; code makes every decision, so numbers are exact and the AI never approves its own work.
+
+| Uses the LLM (writing) | Pure code (deciding) |
+| --- | --- |
+| Builder: the "why" text on each proposal | Threat intel: relevance scoring |
+| Posture: report summary, advisory intro | Coverage: gap check |
+| Chat: plain-language answers from retrieved memory | Rule health, noise tuning, validation: checks and thresholds |
+| | Engineer review: records decisions and reasons |
+
+The model is not retrained. It becomes a detection assistant through its instructions and the context it is given (coverage, log sources, past decisions from memory). Decisions saved with reasons make later drafts follow the team's standards, and can become a fine-tuning dataset later.
+
 ## Detection-as-Code
 
 Git is the single source of truth:
