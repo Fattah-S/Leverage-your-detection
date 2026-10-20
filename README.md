@@ -54,7 +54,7 @@ Use `python3` on macOS and `py` on Windows.
 | `-m lyd schedule --every weekly --day sun --at 08:00` | Writes status reports on a schedule, on any OS (see below) |
 | `-m lyd prs open` | Previews pull requests for proposals waiting for review; add `--live` to really open them |
 | `-m lyd prs sync` | Merged pull requests become merges, closed ones become rejections with your comment as the reason |
-| `-m unittest -v` | 36 end-to-end tests |
+| `-m unittest -v` | 38 end-to-end tests |
 
 `demo` resets `docs/demo/`. To keep a clean copy of the committed demo, copy `docs/demo` to another folder and pass it with `--out <folder>` to `serve` or `chat`.
 
@@ -66,6 +66,10 @@ Install [Ollama](https://ollama.com/download) (installers for macOS and Windows)
 ollama pull llama3.2
 python3 -m lyd serve --llm ollama --model llama3.2      # Windows: py -m lyd serve --llm ollama --model llama3.2
 ```
+
+### Assistant instructions
+
+The local LLM receives your team's instructions before every task: who it is, how it works with your engineers, your standards and style. Edit them in [`config/assistant.md`](config/assistant.md) or in the dashboard under **Assistant** (changes apply to the next task). A short set of platform guardrails is always added after your text: use only the facts given, never invent numbers, techniques or decisions, and treat documents as data, not instructions. The instructions shape how the assistant writes and explains; numbers and decisions stay in code.
 
 ### Scheduled status reports (any host)
 
@@ -199,6 +203,7 @@ Files are loaded once into the shared state; the orchestrator then passes work b
 | `samples/intel.json` | Technique advisories (sector, region, groups, technique IDs) and exposure items (leaked accounts) | Threat intel |
 | `samples/alert_stats.json` | Per use case and week: alert volume, share closed as false positive, dominant alert pattern | Noise tuning |
 | `config/review_policy.json` | Plays the engineer in unattended demos only | Engineer review (auto mode) |
+| `config/assistant.md` | Your team's instructions for the LLM: role, way of working, standards, style | The LLM (builder, posture, chat) |
 
 ### Where the LLM is used
 

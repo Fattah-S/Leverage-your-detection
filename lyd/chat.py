@@ -36,6 +36,11 @@ class Chat:
         low = q.lower()
         if not q or low in ("help", "?"):
             return HELP
+        if re.search(r"\b(instructions?|system prompt|persona)\b", low):
+            from .llm import INSTRUCTIONS
+            return (f"The assistant's instructions are in {INSTRUCTIONS} and on the dashboard's Assistant page, "
+                    "where you can edit them. They tell the LLM who it is, how to work with your team, your standards "
+                    "and style. Numbers and decisions stay in code.")
         if re.search(r"\b(llm|ollama|model|ai)\b", low):
             return self.llm_status()
         if re.search(r"^(what is this|what('?s| is) this (tool|platform|app)|about|who are you|what can you do)\??$", low):

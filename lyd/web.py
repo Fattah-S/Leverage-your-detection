@@ -104,7 +104,7 @@ class App:
     def page(self, title: str, body: str, active: str = "", mermaid: bool = False) -> str:
         nav = "".join(f'<a href="{u}" class="{"on" if active == u else ""}">{n}</a>' for u, n in
                       [("/", "Overview"), ("/reports", "Reports"), ("/advisory", "Monthly advisory"),
-                       ("/trace", "Run trace"), ("/chat", "Chat")])
+                       ("/trace", "Run trace"), ("/chat", "Chat"), ("/assistant", "Assistant")])
         script = ('<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>'
                   '<script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:'
                   'matchMedia("(prefers-color-scheme: dark)").matches?"dark":"default"});</script>') if mermaid else ""
@@ -186,6 +186,23 @@ class App:
         body = md(f.read_text(encoding="utf-8")) if f.exists() else "<p>No run trace yet. Run the demo first: <code>python3 -m lyd demo</code> on Mac, <code>py -m lyd demo</code> on Windows.</p>"
         return self.page("Run trace", body, "/trace", mermaid=True)
 
+    def assistant_page(self, saved: bool = False) -> str:
+        from .llm import GUARDRAILS, INSTRUCTIONS
+        text = INSTRUCTIONS.read_text(encoding="utf-8") if INSTRUCTIONS.exists() else ""
+        body = ("<h1>Assistant instructions</h1>"
+                + ("<div class=flash>Saved. The next LLM task uses these instructions.</div>" if saved else "")
+                + "<p class=note>Given to the local LLM before every task: who it is, how it works with your team, "
+                "your standards and style. They shape how it writes and explains; the platform's numbers and "
+                f"decisions stay in code. Active LLM: <b>{esc(self.p.ctx.llm.name)}</b>"
+                + (" (the mock ignores these; start with <code>--llm ollama</code>)" if self.p.ctx.llm.name == "mock" else "")
+                + f". Stored in <code>{esc(str(INSTRUCTIONS))}</code>.</p>"
+                "<form method=post action=/assistant>"
+                "<textarea name=text style='width:100%;min-height:440px;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace;"
+                "padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)'>"
+                f"{esc(text)}</textarea><p><button class=ok>Save instructions</button></p></form>"
+                f"<p class=note>Always added after your text and cannot be removed here: {esc(GUARDRAILS)}</p>")
+        return self.page("Assistant", body, "/assistant")
+
     def chat_page(self) -> str:
         body = ("<h1>Chat</h1><p class=note>Try: what's our coverage? · what should we build next? · "
                 "build a use case for T1204.001 · what's waiting for review? · why was PR-009 rejected?</p>"
@@ -230,6 +247,8 @@ def make_handler(app: App):
                     return self.send(200, app.trace())
                 if u.path == "/chat":
                     return self.send(200, app.chat_page())
+                if u.path == "/assistant":
+                    return self.send(200, app.assistant_page(qs.get("saved", [""])[0] == "1"))
                 if u.path == "/layer":
                     week = qs.get("week", [""])[0]
                     f = app.p.out / week / "navigator-layer.json"
@@ -239,7 +258,7 @@ def make_handler(app: App):
             self.send(404, app.page("Not found", "<p>Not found.</p>"))
 
         def do_POST(self):
-            length = min(int(self.headers.get("Content-Length") or 0), 100_000)
+            length = min(int(self.headers.get("Content-Length") or 0), 200_000)
             raw = self.rfile.read(length).decode()
             u = urlparse(self.path)
             with app.lock:
@@ -249,6 +268,15 @@ def make_handler(app: App):
                     except ValueError:
                         return self.send(400, json.dumps({"answer": "bad request"}), "application/json")
                     return self.send(200, json.dumps({"answer": app.chat.ask(q)}), "application/json")
+                if u.path == "/assistant":
+                    from .llm import INSTRUCTIONS
+                    text = parse_qs(raw).get("text", [""])[0][:20_000]
+                    if text.strip():
+                        INSTRUCTIONS.write_text(text.replace("\r\n", "\n"), encoding="utf-8")
+                    self.send_response(303)
+                    self.send_header("Location", "/assistant?saved=1")
+                    self.end_headers()
+                    return
                 if u.path == "/review":
                     f = parse_qs(raw)
                     pid, decision = f.get("pid", [""])[0], f.get("decision", [""])[0]
