@@ -1,0 +1,15 @@
+{
+  "_comment": "Placeholder use-case library: metadata only, no detection logic.",
+  "use_cases": [
+    {"id": "UC-001", "title": "PowerShell use case", "techniques": ["T1059.001"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-002", "title": "Scheduled task use case", "techniques": ["T1053.005"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-003", "title": "Phishing attachment use case", "techniques": ["T1566.001"], "log_source": "email_gateway", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-004", "title": "System discovery use case", "techniques": ["T1082"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-005", "title": "Security tool tampering use case", "techniques": ["T1562.001"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-006", "title": "Remote desktop use case", "techniques": ["T1021.001"], "log_source": "authentication", "owner": "", "status": "active", "validated": true},
+    {"id": "UC-007", "title": "User discovery use case", "techniques": ["T1033"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-008", "title": "Network configuration discovery use case", "techniques": ["T1016"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-009", "title": "Valid accounts use case", "techniques": ["T1078"], "log_source": "authentication", "owner": "detection-engineering", "status": "active", "validated": true},
+    {"id": "UC-010", "title": "Run key persistence use case (not yet tested)", "techniques": ["T1547.001"], "log_source": "endpoint_process", "owner": "detection-engineering", "status": "active", "validated": false}
+  ]
+}

@@ -77,8 +77,17 @@ def main(src: str, release: str) -> None:
                 if tid:
                     groups[src_ref]["techniques"].add(tid)
 
+    # Retired techniques and what replaced them (STIX "revoked-by" relationships)
+    revoked_by = {}
+    for r in objs:
+        if r["type"] == "relationship" and r.get("relationship_type") == "revoked-by":
+            s, t = by_id.get(r["source_ref"]), by_id.get(r["target_ref"])
+            if s and t and s["type"] == "attack-pattern" and ext_id(s) and ext_id(t):
+                revoked_by[ext_id(s)] = ext_id(t)
+
     out = {
         "attack_release": release,
+        "revoked_by": dict(sorted(revoked_by.items())),
         "source": "https://github.com/mitre/cti",
         "terms": "https://attack.mitre.org/resources/legal-and-branding/terms-of-use/",
         "tactic_order": tactic_order,

@@ -1,0 +1,15 @@
+{
+  "_comment": "Placeholder intel items: structured fields only. Group IDs and technique IDs are real ATT&CK identifiers; the items themselves are fictional.",
+  "week-1": [
+    {"id": "intel-001", "type": "ttp", "title": "Placeholder advisory: activity against GCC banks", "sector": "banking", "region": "GCC", "groups": ["G0049"],
+     "techniques": ["T1003.001", "T1071.001", "T1105", "T1059.001", "T1505.003", "T1547.001"]},
+    {"id": "intel-002", "type": "ttp", "title": "Placeholder advisory: retail sector campaign", "sector": "retail", "region": "LATAM", "groups": [],
+     "techniques": ["T1486"]},
+    {"id": "intel-003", "type": "exposure", "account": "user01@example-bank.test", "source": "leak-site tracker (sample)", "seen": "2026-10-14"}
+  ],
+  "week-2": [
+    {"id": "intel-004", "type": "ttp", "title": "Placeholder advisory: new activity against GCC financial sector", "sector": "banking", "region": "GCC", "groups": ["G0069"],
+     "techniques": ["T1105", "T1204.002", "T1059.005", "T1003.001"]},
+    {"id": "intel-005", "type": "exposure", "account": "user02@example-bank.test", "source": "leak-site tracker (sample)", "seen": "2026-10-19"}
+  ]
+}

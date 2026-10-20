@@ -1,0 +1,13 @@
+{
+  "_comment": "Placeholder weekly alert statistics per use case (volume, share closed as false positive by analysts, dominant alert cluster).",
+  "week-1": [
+    {"use_case": "UC-001", "alerts_7d": 412, "fp_closed_ratio": 0.94, "top_cluster": {"fields": {"account": "svc_backup", "host": "SRV-BKP01"}, "share": 0.91}},
+    {"use_case": "UC-004", "alerts_7d": 80, "fp_closed_ratio": 0.85, "top_cluster": {"fields": {"process": "monitor-agent.exe"}, "share": 0.8}},
+    {"use_case": "UC-002", "alerts_7d": 12, "fp_closed_ratio": 0.1, "top_cluster": {"fields": {"account": "it.admin"}, "share": 0.4}}
+  ],
+  "week-2": [
+    {"use_case": "UC-001", "alerts_7d": 37, "fp_closed_ratio": 0.3, "top_cluster": {"fields": {"host": "WKS-017"}, "share": 0.2}},
+    {"use_case": "UC-004", "alerts_7d": 78, "fp_closed_ratio": 0.84, "top_cluster": {"fields": {"process": "monitor-agent.exe", "host": "SRV-MON01"}, "share": 0.8}},
+    {"use_case": "UC-002", "alerts_7d": 10, "fp_closed_ratio": 0.1, "top_cluster": {"fields": {"account": "it.admin"}, "share": 0.4}}
+  ]
+}

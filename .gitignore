@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 .venv/
+docs/demo/events.sqlite
+docs/demo/_routes/

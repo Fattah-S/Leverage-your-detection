@@ -1,0 +1,12 @@
+{"decision": "merged", "key": "watch:user01@example-bank.test", "kind": "decision", "proposal": "PR-001", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "fix:UC-003:missing_log_source", "kind": "decision", "proposal": "PR-002", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "fix:UC-005:stale_technique", "kind": "decision", "proposal": "PR-003", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "fix:UC-006:no_owner", "kind": "decision", "proposal": "PR-004", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "tune:UC-001:account=svc_backup,host=SRV-BKP01", "kind": "decision", "proposal": "PR-005", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "new:T1003.001", "kind": "decision", "proposal": "PR-007", "reason": "approved", "week": "week-1"}
+{"decision": "merged", "key": "new:T1071.001", "kind": "decision", "proposal": "PR-008", "reason": "approved", "week": "week-1"}
+{"decision": "rejected", "key": "new:T1105", "kind": "decision", "proposal": "PR-009", "reason": "Already alerted by the EDR; a SIEM use case would duplicate it", "week": "week-1"}
+{"decision": "merged", "key": "watch:user02@example-bank.test", "kind": "decision", "proposal": "PR-011", "reason": "approved", "week": "week-2"}
+{"decision": "merged", "key": "tune:UC-004:host=SRV-MON01,process=monitor-agent.exe", "kind": "decision", "proposal": "PR-012", "reason": "approved", "week": "week-2"}
+{"decision": "merged", "key": "new:T1204.002", "kind": "decision", "proposal": "PR-013", "reason": "approved", "week": "week-2"}
+{"decision": "merged", "key": "new:T1059.005", "kind": "decision", "proposal": "PR-014", "reason": "approved", "week": "week-2"}

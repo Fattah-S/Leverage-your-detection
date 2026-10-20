@@ -1,0 +1,6 @@
+{
+  "_comment": "Plays the engineer in the unattended demo. In the product a person merges or rejects each pull request.",
+  "reject": {
+    "new:T1105": "Already alerted by the EDR; a SIEM use case would duplicate it"
+  }
+}

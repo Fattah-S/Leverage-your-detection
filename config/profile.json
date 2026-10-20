@@ -1,0 +1,12 @@
+{
+  "name": "Example Gulf Bank (fictional)",
+  "sectors": ["banking", "financial services"],
+  "regions": ["GCC"],
+  "threat_groups": ["G0049", "G0069", "G0064", "G0087"],
+  "log_sources": ["endpoint_process", "authentication", "network", "cloud_signin"],
+  "no_visibility": ["T1505.003"],
+  "default_owner": "detection-engineering",
+  "relevance_threshold": 60,
+  "watchlist_days": 90,
+  "noise": {"min_alerts_7d": 50, "min_fp_ratio": 0.8, "min_cluster_share": 0.7}
+}
