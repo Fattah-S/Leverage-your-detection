@@ -91,5 +91,5 @@ def markdown(ctx, period: str, top: int = 10) -> str:
     if r["onboard"]:
         lines += ["", "## Onboard a log source first", ""]
         lines += [f"- {x['technique']} {x['name']} (used by {', '.join(x['groups'])})" for x in r["onboard"]]
-    lines += ["", "To start one: `python3 -m lyd chat --ask \"build a use case for <technique>\"`.", ""]
+    lines += ["", "To start one, ask the chat: \"build a use case for <technique>\".", ""]
     return "\n".join(lines)

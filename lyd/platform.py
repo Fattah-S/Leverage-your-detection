@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_json(path: Path) -> dict:
-    return json.loads(Path(path).read_text())
+    return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
 class Platform:
@@ -55,7 +55,7 @@ class Platform:
         state = {"week": self.ctx.week, "review_mode": self.ctx.review_mode, "library": self.ctx.library,
                  "proposals": self.ctx.proposals, "coverage_history": self.ctx.coverage_history,
                  "intel_seen": self.ctx.intel_seen}
-        (self.out / "state.json").write_text(json.dumps(state, indent=1, sort_keys=True))
+        (self.out / "state.json").write_text(json.dumps(state, indent=1, sort_keys=True), encoding="utf-8")
 
     def score(self) -> dict:
         return score(self.ctx)

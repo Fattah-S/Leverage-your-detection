@@ -119,7 +119,7 @@ class GitHubPRTest(unittest.TestCase):
     def test_dry_run_writes_previews(self):
         res = github_pr.open_prs(self.p, "owner/repo", dry_run=True)
         self.assertEqual(len(res), 2)
-        text = Path(res[0]["file"]).read_text()
+        text = Path(res[0]["file"]).read_text(encoding="utf-8")
         self.assertIn("detections/UC-T1204.001.json", text)
         self.assertIn("<!-- lyd:", text)
 

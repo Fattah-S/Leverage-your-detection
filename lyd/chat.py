@@ -207,12 +207,12 @@ class Chat:
         weeks = sorted(d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists())
         if not weeks:
             return "No weekly report yet."
-        text = (self.p.out / weeks[-1] / "report.md").read_text()
+        text = (self.p.out / weeks[-1] / "report.md").read_text(encoding="utf-8")
         m = re.search(r"## Summary\n\n(.+?)\n", text)
         return f"{weeks[-1]}: {m.group(1) if m else 'see the report'} (full report: {self.p.out / weeks[-1] / 'report.md'})"
 
     def search(self, q: str) -> str:
-        reports = {d.name: (d / "report.md").read_text() for d in self.p.out.iterdir()
+        reports = {d.name: (d / "report.md").read_text(encoding="utf-8") for d in self.p.out.iterdir()
                    if d.is_dir() and (d / "report.md").exists()}
         hits = rag.build(self.p.ctx, reports).search(q, k=4)
         if not hits:

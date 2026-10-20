@@ -31,4 +31,4 @@ For October 2026, 118 priority gaps are ranked; the 10 highest are recommended b
 
 - T1505.003 Server Software Component: Web Shell (used by OilRig, APT39)
 
-To start one: `python3 -m lyd chat --ask "build a use case for <technique>"`.
+To start one, ask the chat: "build a use case for <technique>".

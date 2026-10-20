@@ -6,37 +6,63 @@
 
 ![Dashboard](docs/images/dashboard-overview.png)
 
-## Run it on your Mac
+## Run it (macOS or Windows)
 
-Needs only Python 3.9+ (built into macOS). No packages to install.
+Needs Python 3.9 or newer and Git. No other packages to install.
+
+| | macOS | Windows |
+| --- | --- | --- |
+| Terminal | Terminal app | PowerShell |
+| Python | Built in (`python3`). If missing, run `xcode-select --install` | Install from [python.org](https://www.python.org/downloads/windows/) (tick **Add python.exe to PATH**) or run `winget install Python.Python.3.12` |
+| Git | Built in (`git`), same `xcode-select --install` if missing | Install from [git-scm.com](https://git-scm.com/download/win) or run `winget install Git.Git` |
+| Python command | `python3` | `py` |
+
+### macOS
 
 ```bash
+cd ~
 git clone https://github.com/Fattah-S/Leverage-your-detection.git
 cd Leverage-your-detection
 python3 -m lyd demo        # two simulated weeks; outputs in docs/demo/
 python3 -m lyd serve       # dashboard: open http://127.0.0.1:8765
 ```
 
+### Windows (PowerShell)
+
+```powershell
+cd $HOME
+git clone https://github.com/Fattah-S/Leverage-your-detection.git
+cd Leverage-your-detection
+py -m lyd demo             # two simulated weeks; outputs in docs\demo\
+py -m lyd serve            # dashboard: open http://127.0.0.1:8765
+```
+
+If Windows Firewall asks about Python when you start the dashboard, you can click **Cancel**: the dashboard only listens on your own computer (127.0.0.1) and needs no network access. Stop it with **Ctrl+C**.
+
+### All commands
+
+Use `python3` on macOS and `py` on Windows.
+
 | Command | What it does |
 | --- | --- |
-| `python3 -m lyd demo` | Runs two simulated weeks; a review policy plays the engineer so it runs unattended |
-| `python3 -m lyd demo --review manual` | Same, but proposals wait in the review queue for you |
-| `python3 -m lyd serve` | Dashboard: coverage, review queue (approve / reject with a reason), reports, advisory, run trace, chat |
-| `python3 -m lyd chat` | Chat in the terminal; `--ask "question"` for one answer |
-| `python3 -m lyd advisory` | Writes the monthly use-case advisory |
-| `python3 -m lyd prs open` | Previews pull requests for proposals waiting for review; add `--live` to really open them |
-| `python3 -m lyd prs sync` | Merged pull requests become merges, closed ones become rejections with your comment as the reason |
-| `python3 -m unittest -v` | 30 end-to-end tests |
+| `-m lyd demo` | Runs two simulated weeks; a review policy plays the engineer so it runs unattended |
+| `-m lyd demo --review manual` | Same, but proposals wait in the review queue for you |
+| `-m lyd serve` | Dashboard: coverage, review queue (approve / reject with a reason), reports, advisory, run trace, chat |
+| `-m lyd chat` | Chat in the terminal; `--ask "question"` for one answer |
+| `-m lyd advisory` | Writes the monthly use-case advisory |
+| `-m lyd prs open` | Previews pull requests for proposals waiting for review; add `--live` to really open them |
+| `-m lyd prs sync` | Merged pull requests become merges, closed ones become rejections with your comment as the reason |
+| `-m unittest -v` | 30 end-to-end tests |
 
-`demo` resets `docs/demo/`. To keep a clean copy of the committed demo, run the dashboard and chat with `--out some-folder` after copying `docs/demo` there.
+`demo` resets `docs/demo/`. To keep a clean copy of the committed demo, copy `docs/demo` to another folder and pass it with `--out <folder>` to `serve` or `chat`.
 
 ### Local LLM (optional)
 
-Install [Ollama](https://ollama.com), then add `--llm ollama` to any command. The local model writes justifications, report summaries and free-form chat answers; numbers and decisions always come from code.
+Install [Ollama](https://ollama.com/download) (installers for macOS and Windows), then add `--llm ollama` to any command. The local model writes justifications, report summaries and free-form chat answers; numbers and decisions always come from code.
 
 ```bash
 ollama pull llama3.2
-python3 -m lyd serve --llm ollama --model llama3.2
+python3 -m lyd serve --llm ollama --model llama3.2      # Windows: py -m lyd serve --llm ollama --model llama3.2
 ```
 
 ### Chat
@@ -51,11 +77,13 @@ Chat requests run through the same agents as scheduled work: "build a use case f
 
 Each proposal waiting for review can become a real pull request that adds `detections/<use case>.json`, with the reason and validation checks in the description. Merging the PR accepts it; closing it with a comment rejects it and the comment becomes the reason the platform remembers.
 
+Sign in once with the [GitHub CLI](https://cli.github.com/) (`brew install gh` on macOS, `winget install GitHub.cli` on Windows), or set a token instead:
+
 ```bash
-gh auth login                          # or: export GITHUB_TOKEN=...
-python3 -m lyd prs open                # preview (dry run)
-python3 -m lyd prs open --live         # push branches and open the PRs under your account
-python3 -m lyd prs sync                # after you merge or close them on GitHub
+gh auth login                  # or macOS: export GITHUB_TOKEN=...   Windows PowerShell: $env:GITHUB_TOKEN="..."
+python3 -m lyd prs open        # preview (dry run); Windows: py -m lyd prs open
+python3 -m lyd prs open --live # push branches and open the PRs under your account
+python3 -m lyd prs sync        # after you merge or close them on GitHub
 ```
 
 Branches are created in a temporary git worktree, so your working folder is not touched.

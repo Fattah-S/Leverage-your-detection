@@ -117,6 +117,6 @@ class PostureNode(Node):
         if ctx.out_dir:
             d = ctx.out_dir / week
             d.mkdir(parents=True, exist_ok=True)
-            (d / "report.md").write_text(report_markdown(ctx, week, before, after, events))
-            (d / "navigator-layer.json").write_text(json.dumps(navigator_layer(ctx, week), indent=1))
+            (d / "report.md").write_text(report_markdown(ctx, week, before, after, events), encoding="utf-8")
+            (d / "navigator-layer.json").write_text(json.dumps(navigator_layer(ctx, week), indent=1), encoding="utf-8")
         return [("report_written", {"week": week, "pct_before": before["pct"], "pct_after": after["pct"]})]

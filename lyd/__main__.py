@@ -9,12 +9,14 @@
     python3 -m lyd prs sync                   merged / closed pull requests -> decisions
     python3 -m lyd routes                     which agent listens to which event
 
+On Windows, type `py` instead of `python3`.
 Add --llm ollama [--model llama3.2] to any command to let a local model write the text.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from . import advisory, attack
@@ -23,6 +25,7 @@ from .platform import ROOT, Platform, load_json
 from .trace import write as write_trace
 
 DEFAULT_OUT = ROOT / "docs" / "demo"
+PY = "py" if sys.platform == "win32" else "python3"   # how to call Python on this system
 
 
 def platform(args, review_mode=None, fresh=False) -> Platform:
@@ -31,7 +34,7 @@ def platform(args, review_mode=None, fresh=False) -> Platform:
 
 def write_advisory(p: Platform, period: str = "October 2026") -> Path:
     f = p.out / "monthly-advisory.md"
-    f.write_text(advisory.markdown(p.ctx, period))
+    f.write_text(advisory.markdown(p.ctx, period), encoding="utf-8")
     return f
 
 
@@ -45,7 +48,7 @@ def cmd_demo(args) -> None:
               f"review: {p.ctx.review_mode}\n\n"
               "> Placeholder use cases and placeholder intel. This proves the agents are linked and the "
               "event flow works end to end; it does not measure detection quality.")
-    (p.out / "run-trace.md").write_text(write_trace(p.bus, p.orch.routing_table(), header))
+    (p.out / "run-trace.md").write_text(write_trace(p.bus, p.orch.routing_table(), header), encoding="utf-8")
     write_advisory(p)
     p.save()
     print(f"Agents: {', '.join(n.name for n in p.orch.nodes)}")
@@ -57,7 +60,7 @@ def cmd_demo(args) -> None:
         status[pr["status"]] = status.get(pr["status"], 0) + 1
     print("Proposals: " + ", ".join(f"{v} {k.replace('_', ' ')}" for k, v in sorted(status.items())))
     print(f"Outputs in {p.out}: run-trace.md, week-1/report.md, week-2/report.md, monthly-advisory.md")
-    print("Next: python3 -m lyd serve   (dashboard)   or   python3 -m lyd chat")
+    print(f"Next: {PY} -m lyd serve   (dashboard)   or   {PY} -m lyd chat")
 
 
 def cmd_serve(args) -> None:
@@ -78,7 +81,7 @@ def cmd_chat(args) -> None:
 def cmd_advisory(args) -> None:
     p = platform(args)
     f = write_advisory(p, args.period)
-    print(f.read_text())
+    print(f.read_text(encoding="utf-8"))
 
 
 def cmd_prs(args) -> None:
@@ -87,7 +90,7 @@ def cmd_prs(args) -> None:
     if args.action == "open":
         res = github_pr.open_prs(p, args.repo, args.base, dry_run=not args.live)
         if not res:
-            print("No proposals waiting for review. Ask the chat to build a use case, or run: python3 -m lyd demo --review manual")
+            print(f"No proposals waiting for review. Ask the chat to build a use case, or run: {PY} -m lyd demo --review manual")
         for r in res:
             print(f"{r['proposal']}: " + (f"dry run, preview in {r['file']}" if r.get("dry_run") else f"opened #{r['number']} {r['url']}"))
         if res and not args.live:
@@ -107,6 +110,10 @@ def cmd_routes(args) -> None:
 
 
 def main() -> None:
+    # Windows consoles and redirected output may not default to UTF-8 ("→", "·" in answers).
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(prog="lyd", description="Leverage your detection: multi-agent prototype")
     sub = ap.add_subparsers(dest="cmd", required=True)
 

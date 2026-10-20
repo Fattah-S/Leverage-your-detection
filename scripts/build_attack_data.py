@@ -32,7 +32,7 @@ def live(obj: dict) -> bool:
 
 
 def main(src: str, release: str) -> None:
-    bundle = json.loads(Path(src).read_text())
+    bundle = json.loads(Path(src).read_text(encoding="utf-8"))
     objs = bundle["objects"]
     by_id = {o["id"]: o for o in objs}
 
@@ -98,7 +98,7 @@ def main(src: str, release: str) -> None:
                    for g in sorted(groups.values(), key=lambda g: g["id"])},
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(out, indent=1))
+    OUT.write_text(json.dumps(out, indent=1), encoding="utf-8")
     print(f"wrote {OUT} ({len(techniques)} techniques, {len(out['groups'])} groups)")
 
 

@@ -79,7 +79,7 @@ class FlowTest(unittest.TestCase):
         out = Path(self.tmp.name) / "out"
         for w in ("week-1", "week-2"):
             self.assertTrue((out / w / "report.md").exists())
-            layer = json.loads((out / w / "navigator-layer.json").read_text())
+            layer = json.loads((out / w / "navigator-layer.json").read_text(encoding="utf-8"))
             self.assertEqual(layer["domain"], "enterprise-attack")
             self.assertTrue(layer["techniques"])
 

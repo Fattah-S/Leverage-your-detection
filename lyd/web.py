@@ -168,7 +168,7 @@ class App:
     def reports(self, week: str | None) -> str:
         weeks = sorted(d.name for d in self.p.out.iterdir() if d.is_dir() and (d / "report.md").exists())
         if week and week in weeks:
-            text = (self.p.out / week / "report.md").read_text()
+            text = (self.p.out / week / "report.md").read_text(encoding="utf-8")
             body = (f"<p class=note><a href='/reports'>All reports</a> · <a href='/layer?week={esc(week)}'>Download Navigator layer</a> "
                     f"(open it in the <a href='https://mitre-attack.github.io/attack-navigator/'>ATT&amp;CK Navigator</a>)</p>" + md(text))
             return self.page(week, body, "/reports")
@@ -180,7 +180,7 @@ class App:
 
     def trace(self) -> str:
         f = self.p.out / "run-trace.md"
-        body = md(f.read_text()) if f.exists() else "<p>No run trace yet. Run <code>python3 -m lyd demo</code>.</p>"
+        body = md(f.read_text(encoding="utf-8")) if f.exists() else "<p>No run trace yet. Run the demo first: <code>python3 -m lyd demo</code> on Mac, <code>py -m lyd demo</code> on Windows.</p>"
         return self.page("Run trace", body, "/trace", mermaid=True)
 
     def chat_page(self) -> str:
@@ -231,7 +231,7 @@ def make_handler(app: App):
                     week = qs.get("week", [""])[0]
                     f = app.p.out / week / "navigator-layer.json"
                     if re.fullmatch(r"[\w-]+", week) and f.exists():
-                        return self.send(200, f.read_text(), "application/json",
+                        return self.send(200, f.read_text(encoding="utf-8"), "application/json",
                                          {"Content-Disposition": f'attachment; filename="{week}-layer.json"'})
             self.send(404, app.page("Not found", "<p>Not found.</p>"))
 

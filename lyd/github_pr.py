@@ -79,7 +79,7 @@ def open_prs(platform: Platform, repo: str, base: str = "main", dry_run: bool = 
         for p in pending:
             path, content = use_case_file(p)
             (out / f"{p['id']}.md").write_text(f"# {title(p)}\n\nBranch: `lyd/{p['id'].lower()}` → `{base}`\n\n"
-                                               f"{body(p)}\n## File `{path}`\n\n```json\n{content}```\n")
+                                               f"{body(p)}\n## File `{path}`\n\n```json\n{content}```\n", encoding="utf-8")
             results.append({"proposal": p["id"], "dry_run": True, "file": str(out / f"{p['id']}.md")})
         return results
 
@@ -96,7 +96,7 @@ def open_prs(platform: Platform, repo: str, base: str = "main", dry_run: bool = 
             subprocess.run(["git", "-C", str(ROOT), "worktree", "add", "-q", "-B", branch, str(wt), f"origin/{base}"],
                            check=True)
             (wt / path).parent.mkdir(parents=True, exist_ok=True)
-            (wt / path).write_text(content)
+            (wt / path).write_text(content, encoding="utf-8")
             subprocess.run(["git", "-C", str(wt), "add", path], check=True)
             subprocess.run(["git", "-C", str(wt), "commit", "-q", "-m", title(p)], check=True)
             subprocess.run(["git", "-C", str(wt), "push", "-q", "-f", "origin", branch], check=True)

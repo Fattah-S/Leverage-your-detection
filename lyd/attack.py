@@ -11,7 +11,7 @@ DATA = ROOT / "data" / "attack" / "enterprise-compact.json"
 
 @lru_cache(maxsize=1)
 def load() -> dict:
-    return json.loads(DATA.read_text())
+    return json.loads(DATA.read_text(encoding="utf-8"))
 
 
 def technique(tid: str) -> dict | None:
