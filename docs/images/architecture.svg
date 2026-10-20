@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8a8a85"/>
+    </marker>
+  </defs>
+  <rect width="760" height="640" fill="#ffffff"/>
+  <text x="24" y="34" font-size="16" font-weight="600" fill="#1f1f1d">Nodes propose, Git and CI check, engineers approve, the pipeline deploys</text>
+
+  <!-- inputs -->
+  <g>
+    <rect x="24" y="52" width="712" height="64" rx="8" fill="#f4f3ee" stroke="#b4b2a9"/>
+    <text x="40" y="74" font-weight="600" fill="#1f1f1d">Inputs</text>
+    <text x="40" y="96" fill="#5f5e5a">Rules + log sources · MITRE ATT&amp;CK · MISP · advisories · leak-site tracker · exposure records · engineer chat</text>
+  </g>
+  <path d="M380 116V142" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+
+  <!-- nodes -->
+  <rect x="24" y="146" width="712" height="176" rx="8" fill="#f4f3ee" stroke="#b4b2a9"/>
+  <text x="40" y="168" font-weight="600" fill="#1f1f1d">Specialist nodes (agents)</text>
+  <g fill="#ffffff" stroke="#8a8a85">
+    <rect x="40" y="178" width="216" height="56" rx="8"/>
+    <rect x="272" y="178" width="216" height="56" rx="8"/>
+    <rect x="504" y="178" width="216" height="56" rx="8"/>
+    <rect x="40" y="250" width="216" height="56" rx="8"/>
+    <rect x="272" y="250" width="216" height="56" rx="8"/>
+    <rect x="504" y="250" width="216" height="56" rx="8"/>
+  </g>
+  <g fill="#1f1f1d" font-weight="600">
+    <text x="52" y="200">Coverage node</text>
+    <text x="284" y="200">Threat intel node</text>
+    <text x="516" y="200">Use-case builder node</text>
+    <text x="52" y="272">Noise tuning node</text>
+    <text x="284" y="272">Rule health node</text>
+    <text x="516" y="272">Posture node</text>
+  </g>
+  <g fill="#5f5e5a" font-size="12">
+    <text x="52" y="220">ATT&amp;CK gaps via DeTT&amp;CT</text>
+    <text x="284" y="220">New TTPs + exposure, scored</text>
+    <text x="516" y="220">Drafts Sigma use cases</text>
+    <text x="52" y="292">Proposes narrow FP fixes</text>
+    <text x="284" y="292">Finds and fixes broken rules</text>
+    <text x="516" y="292">Score, reports, advisory</text>
+  </g>
+  <path d="M380 322V348" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+
+  <!-- engine -->
+  <rect x="24" y="352" width="712" height="64" rx="8" fill="#e6f1fb" stroke="#378add" stroke-width="2"/>
+  <text x="40" y="376" font-weight="600" fill="#0c447c">Shared engine: orchestrator + event bus + local open-source LLM + RAG memory</text>
+  <text x="40" y="398" fill="#185fa5" font-size="12">Python, SQLite events, Ollama; memory of rules, intel, results and engineer decisions; no data leaves</text>
+  <path d="M380 416V442" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+
+  <!-- DaC -->
+  <rect x="24" y="446" width="712" height="104" rx="8" fill="#f4f3ee" stroke="#b4b2a9"/>
+  <text x="40" y="468" font-weight="600" fill="#1f1f1d">Detection-as-Code pipeline (Git)</text>
+  <g fill="#ffffff" stroke="#8a8a85">
+    <rect x="40" y="478" width="158" height="56" rx="8"/>
+    <rect x="214" y="478" width="158" height="56" rx="8"/>
+    <rect x="388" y="478" width="158" height="56" rx="8"/>
+    <rect x="562" y="478" width="158" height="56" rx="8"/>
+  </g>
+  <g fill="#1f1f1d" font-weight="600">
+    <text x="52" y="500">Pull request</text>
+    <text x="226" y="500">Validation (CI)</text>
+    <text x="400" y="500">Engineer review</text>
+    <text x="574" y="500">Deploy</text>
+  </g>
+  <g fill="#5f5e5a" font-size="12">
+    <text x="52" y="520">Change + reason</text>
+    <text x="226" y="520">Lint, convert, replay</text>
+    <text x="400" y="520">Merge or reject</text>
+    <text x="574" y="520">pySigma to any SIEM</text>
+  </g>
+  <g stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)">
+    <path d="M198 506H212"/><path d="M372 506H386"/><path d="M546 506H560"/>
+  </g>
+  <path d="M467 550V576" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+  <path d="M641 550V576" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+
+  <!-- outputs -->
+  <g fill="#ffffff" stroke="#8a8a85">
+    <rect x="388" y="580" width="158" height="44" rx="8"/>
+    <rect x="562" y="580" width="158" height="44" rx="8"/>
+  </g>
+  <text x="400" y="607" font-weight="600" fill="#1f1f1d">Decision memory</text>
+  <text x="574" y="607" font-weight="600" fill="#1f1f1d">SIEM + coverage map</text>
+</svg>

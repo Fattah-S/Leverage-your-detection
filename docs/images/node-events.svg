@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#8a8a85"/>
+    </marker>
+  </defs>
+  <rect width="760" height="420" fill="#ffffff"/>
+  <text x="24" y="34" font-size="16" font-weight="600" fill="#1f1f1d">Nodes never call each other: they emit events, the orchestrator routes them</text>
+
+  <g fill="#e1f5ee" stroke="#0f6e56">
+    <rect x="24" y="56" width="128" height="56" rx="8"/>
+    <rect x="170" y="56" width="128" height="56" rx="8"/>
+    <rect x="316" y="56" width="128" height="56" rx="8"/>
+    <rect x="462" y="56" width="128" height="56" rx="8"/>
+    <rect x="608" y="56" width="128" height="56" rx="8"/>
+  </g>
+  <g fill="#085041" font-weight="600" text-anchor="middle">
+    <text x="88" y="80">Threat intel</text>
+    <text x="234" y="80">Coverage</text>
+    <text x="380" y="80">Rule health</text>
+    <text x="526" y="80">Noise tuning</text>
+    <text x="672" y="80">Posture</text>
+  </g>
+  <g fill="#0f6e56" font-size="12" text-anchor="middle">
+    <text x="88" y="99">new_ttp</text>
+    <text x="234" y="99">gap</text>
+    <text x="380" y="99">broken_rule</text>
+    <text x="526" y="99">noisy_rule</text>
+    <text x="672" y="99">weekly_score</text>
+  </g>
+  <g stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)">
+    <path d="M88 112V148"/><path d="M234 112V148"/><path d="M380 112V148"/><path d="M526 112V148"/><path d="M672 112V148"/>
+  </g>
+
+  <rect x="24" y="152" width="712" height="56" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="2"/>
+  <text x="380" y="176" text-anchor="middle" font-weight="600" fill="#3c3489">Orchestrator + event bus</text>
+  <text x="380" y="195" text-anchor="middle" font-size="12" fill="#534ab7">Routes each event to the node that handles it</text>
+
+  <path d="M100 208V248" stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)"/>
+  <g fill="#ffffff" stroke="#8a8a85">
+    <rect x="24" y="252" width="152" height="56" rx="8"/>
+    <rect x="210" y="252" width="152" height="56" rx="8"/>
+    <rect x="396" y="252" width="152" height="56" rx="8"/>
+    <rect x="582" y="252" width="152" height="56" rx="8"/>
+  </g>
+  <g fill="#1f1f1d" font-weight="600" text-anchor="middle">
+    <text x="100" y="276">Builder / fixer</text>
+    <text x="286" y="276">Pull request</text>
+    <text x="472" y="276">Validation CI</text>
+    <text x="658" y="276">Engineer merge</text>
+  </g>
+  <g fill="#5f5e5a" font-size="12" text-anchor="middle">
+    <text x="100" y="295">writes the change</text>
+    <text x="286" y="295">change + reason</text>
+    <text x="472" y="295">tests must pass</text>
+    <text x="658" y="295">emits rule_merged</text>
+  </g>
+  <g stroke="#8a8a85" stroke-width="1.25" marker-end="url(#a)">
+    <path d="M176 280H208"/><path d="M362 280H394"/><path d="M548 280H580"/>
+    <path d="M658 252V212"/>
+  </g>
+
+  <rect x="24" y="336" width="712" height="64" rx="8" fill="none" stroke="#b4b2a9" stroke-dasharray="4 4"/>
+  <text x="40" y="356" font-size="12" fill="#5f5e5a">Shared by every node</text>
+  <g fill="#f4f3ee" stroke="#b4b2a9">
+    <rect x="40" y="364" width="332" height="28" rx="6"/>
+    <rect x="388" y="364" width="332" height="28" rx="6"/>
+  </g>
+  <text x="206" y="383" text-anchor="middle" font-weight="600" fill="#1f1f1d">Local LLM + RAG memory</text>
+  <text x="554" y="383" text-anchor="middle" font-weight="600" fill="#1f1f1d">Git repo + state database</text>
+</svg>
