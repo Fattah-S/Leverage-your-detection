@@ -36,6 +36,10 @@ class Chat:
         low = q.lower()
         if not q or low in ("help", "?"):
             return HELP
+        if re.search(r"\b(llm|ollama|model|ai)\b", low):
+            return self.llm_status()
+        if re.search(r"^(what is this|what('?s| is) this (tool|platform|app)|about|who are you|what can you do)\??$", low):
+            return self.about()
         m = re.search(r"\b(approve|merge)\s+(pr-\d{3})\b", low)
         if m:
             return self.decide(m.group(2).upper(), "merged", "approved in chat")
@@ -211,11 +215,39 @@ class Chat:
         m = re.search(r"## Summary\n\n(.+?)\n", text)
         return f"{weeks[-1]}: {m.group(1) if m else 'see the report'} (full report: {self.p.out / weeks[-1] / 'report.md'})"
 
+    def llm_status(self) -> str:
+        name = self.p.ctx.llm.name
+        if name == "mock":
+            return ("No real LLM is active: the platform is running with the built-in mock (fixed text templates).\n"
+                    "To use your local model: install Ollama, run `ollama pull llama3.2`, then restart with\n"
+                    "`python3 -m lyd serve --llm ollama` (Windows: `py -m lyd serve --llm ollama`).\n"
+                    "The model then writes proposal justifications, report summaries, the advisory intro and answers "
+                    "free-form questions here. Numbers and decisions always come from code.")
+        try:
+            llm = getattr(self.p.ctx.llm, "primary", self.p.ctx.llm)
+            reply = llm.write("chat_answer", {"question": "Reply with one short sentence confirming you are ready.",
+                                                         "answer": "", "documents": []})
+            state = f"reachable and answering (\"{reply.strip()[:120]}\")"
+        except OSError:
+            state = "configured but NOT reachable: open the Ollama app and check `ollama list` shows the model"
+        return (f"Active LLM: {name}, {state}.\nIt writes proposal justifications, report summaries, the advisory "
+                "intro and answers free-form questions. Numbers and decisions come from code.")
+
+    def about(self) -> str:
+        s = score(self.p.ctx)
+        return ("This is Leverage your detection, a multi-agent platform for detection engineers. Eight agents "
+                "(threat intel, coverage, rule health, noise tuning, builder, validation, engineer review, posture) "
+                "work together through an event bus: they find coverage gaps against the threat groups that matter "
+                "to you, propose use cases, fixes and tuning, check them, and wait for your decision.\n"
+                f"Right now: {s['pct']}% priority coverage, {len(self.p.awaiting())} proposals waiting for review, "
+                f"LLM: {self.p.ctx.llm.name}. Data is placeholder (prototype).\n\n" + HELP)
+
     def search(self, q: str) -> str:
         reports = {d.name: (d / "report.md").read_text(encoding="utf-8") for d in self.p.out.iterdir()
                    if d.is_dir() and (d / "report.md").exists()}
         hits = rag.build(self.p.ctx, reports).search(q, k=4)
-        if not hits:
+        real_llm = self.p.ctx.llm.name != "mock"
+        if not hits and not real_llm:
             return "I found nothing in the platform's memory for that. Type \"help\" for what I can do."
         def preview(d):
             if d.kind == "report":
@@ -223,13 +255,17 @@ class Chat:
                 return m.group(1) if m else ""
             return d.text[:200]
         facts = "\n".join(f"- [{d.kind}] {d.title}: {preview(d)}" for _, d in hits)
-        answer = "From the platform's memory:\n" + facts
-        if self.p.ctx.llm.name != "mock":
+        answer = ("From the platform's memory:\n" + facts) if hits else "Nothing in the platform's memory matches that."
+        if real_llm:
+            sc = score(self.p.ctx)
+            summary = (f"Organisation {self.p.ctx.profile['name']}; priority coverage {sc['pct']}% "
+                       f"({sc['covered']} of {sc['priority']}); {len(self.p.awaiting())} proposals awaiting review.")
+            llm = getattr(self.p.ctx.llm, "primary", self.p.ctx.llm)
             try:
-                return self.p.ctx.llm.write("chat_answer", {"question": q, "answer": "",
+                return llm.write("chat_answer", {"question": q, "answer": summary,
                                                             "documents": [f"{d.title}: {d.text[:500]}" for _, d in hits]})
             except OSError:
-                return answer + "\n(local LLM not reachable; showing retrieved documents)"
+                return answer + "\n(local LLM not reachable: open the Ollama app)"
         return answer
 
 

@@ -110,7 +110,7 @@ class App:
                   'matchMedia("(prefers-color-scheme: dark)").matches?"dark":"default"});</script>') if mermaid else ""
         return (f"<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
                 f"<title>{esc(title)} · Leverage your detection</title><style>{CSS}</style></head><body>"
-                f"<header><b>Leverage your detection</b>{nav}</header><main>{body}</main>{script}</body></html>")
+                f"<header><b>Leverage your detection</b>{nav}<span class=pill style='margin-left:auto' title='Start with --llm ollama to use a local model'>LLM: {esc(self.p.ctx.llm.name)}</span></header><main>{body}</main>{script}</body></html>")
 
     def overview(self, flash: str = "") -> str:
         ctx = self.p.ctx

@@ -61,5 +61,25 @@ class OllamaLLM:
             return json.loads(resp.read())["response"].strip()
 
 
+class WithFallback:
+    """Uses the local model; if it is unreachable, falls back to the mock text and warns once,
+    so agents keep working when Ollama is not running."""
+
+    def __init__(self, primary):
+        self.primary, self.mock, self.warned = primary, MockLLM(), False
+        self.name = primary.name
+
+    def write(self, task: str, facts: dict) -> str:
+        try:
+            return self.primary.write(task, facts)
+        except OSError:
+            if not self.warned:
+                self.warned = True
+                self.name = f"{self.primary.name} (not reachable, template text used)"
+                print(f"Warning: {self.name} is not reachable (is the Ollama app running? does `ollama list` show "
+                      "the model?). Using template text instead.")
+            return self.mock.write(task, facts)
+
+
 def get(kind: str = "mock", model: str = "llama3.2"):
-    return OllamaLLM(model) if kind == "ollama" else MockLLM()
+    return WithFallback(OllamaLLM(model)) if kind == "ollama" else MockLLM()
