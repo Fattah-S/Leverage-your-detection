@@ -1,0 +1,1152 @@
+{
+ "coverage_history": [
+  {
+   "covered": 8,
+   "covered_ids": [
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1078",
+    "T1082",
+    "T1566.001"
+   ],
+   "no_data": 1,
+   "pct": 6.0,
+   "point": "start",
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 41,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 42,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 43,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 44,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 45,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 46,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "after_event": 47,
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "priority": 134,
+   "week": "week-1"
+  },
+  {
+   "covered": 11,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 8.2,
+   "point": "start",
+   "priority": 134,
+   "week": "week-2"
+  },
+  {
+   "after_event": 78,
+   "covered": 13,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1059.005",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1204.002",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 9.7,
+   "priority": 134,
+   "week": "week-2"
+  },
+  {
+   "after_event": 79,
+   "covered": 13,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1059.005",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1204.002",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 9.7,
+   "priority": 134,
+   "week": "week-2"
+  },
+  {
+   "after_event": 80,
+   "covered": 13,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1059.005",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1204.002",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 9.7,
+   "priority": 134,
+   "week": "week-2"
+  },
+  {
+   "after_event": 81,
+   "covered": 13,
+   "covered_ids": [
+    "T1003.001",
+    "T1016",
+    "T1021.001",
+    "T1033",
+    "T1053.005",
+    "T1059.001",
+    "T1059.005",
+    "T1071.001",
+    "T1078",
+    "T1078.004",
+    "T1082",
+    "T1204.002",
+    "T1685"
+   ],
+   "no_data": 1,
+   "pct": 9.7,
+   "priority": 134,
+   "week": "week-2"
+  }
+ ],
+ "intel_seen": [
+  {
+   "groups": [
+    "G0049"
+   ],
+   "id": "intel-001",
+   "region": "GCC",
+   "sector": "banking",
+   "techniques": [
+    "T1003.001",
+    "T1071.001",
+    "T1105",
+    "T1059.001",
+    "T1505.003",
+    "T1547.001"
+   ],
+   "title": "Placeholder advisory: activity against GCC banks",
+   "type": "ttp",
+   "week": "week-1"
+  },
+  {
+   "groups": [],
+   "id": "intel-002",
+   "region": "LATAM",
+   "sector": "retail",
+   "techniques": [
+    "T1486"
+   ],
+   "title": "Placeholder advisory: retail sector campaign",
+   "type": "ttp",
+   "week": "week-1"
+  },
+  {
+   "account": "user01@example-bank.test",
+   "id": "intel-003",
+   "seen": "2026-10-14",
+   "source": "leak-site tracker (sample)",
+   "type": "exposure",
+   "week": "week-1"
+  },
+  {
+   "groups": [
+    "G0069"
+   ],
+   "id": "intel-004",
+   "region": "GCC",
+   "sector": "banking",
+   "techniques": [
+    "T1105",
+    "T1204.002",
+    "T1059.005",
+    "T1003.001"
+   ],
+   "title": "Placeholder advisory: new activity against GCC financial sector",
+   "type": "ttp",
+   "week": "week-2"
+  },
+  {
+   "account": "user02@example-bank.test",
+   "id": "intel-005",
+   "seen": "2026-10-19",
+   "source": "leak-site tracker (sample)",
+   "type": "exposure",
+   "week": "week-2"
+  }
+ ],
+ "library": {
+  "UC-001": {
+   "exclusions": [
+    {
+     "account": "svc_backup",
+     "host": "SRV-BKP01"
+    }
+   ],
+   "id": "UC-001",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1059.001"
+   ],
+   "title": "PowerShell use case",
+   "validated": true
+  },
+  "UC-002": {
+   "id": "UC-002",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1053.005"
+   ],
+   "title": "Scheduled task use case",
+   "validated": true
+  },
+  "UC-003": {
+   "id": "UC-003",
+   "log_source": "email_gateway",
+   "owner": "detection-engineering",
+   "status": "paused",
+   "techniques": [
+    "T1566.001"
+   ],
+   "title": "Phishing attachment use case",
+   "validated": true
+  },
+  "UC-004": {
+   "exclusions": [
+    {
+     "host": "SRV-MON01",
+     "process": "monitor-agent.exe"
+    }
+   ],
+   "id": "UC-004",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1082"
+   ],
+   "title": "System discovery use case",
+   "validated": true
+  },
+  "UC-005": {
+   "id": "UC-005",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1685"
+   ],
+   "title": "Security tool tampering use case",
+   "validated": true
+  },
+  "UC-006": {
+   "id": "UC-006",
+   "log_source": "authentication",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1021.001"
+   ],
+   "title": "Remote desktop use case",
+   "validated": true
+  },
+  "UC-007": {
+   "id": "UC-007",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1033"
+   ],
+   "title": "User discovery use case",
+   "validated": true
+  },
+  "UC-008": {
+   "id": "UC-008",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1016"
+   ],
+   "title": "Network configuration discovery use case",
+   "validated": true
+  },
+  "UC-009": {
+   "id": "UC-009",
+   "log_source": "authentication",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1078"
+   ],
+   "title": "Valid accounts use case",
+   "validated": true
+  },
+  "UC-010": {
+   "id": "UC-010",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1547.001"
+   ],
+   "title": "Run key persistence use case (not yet tested)",
+   "validated": false
+  },
+  "UC-T1003.001": {
+   "id": "UC-T1003.001",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1003.001"
+   ],
+   "title": "OS Credential Dumping: LSASS Memory",
+   "validated": true
+  },
+  "UC-T1059.005": {
+   "id": "UC-T1059.005",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1059.005"
+   ],
+   "title": "Command and Scripting Interpreter: Visual Basic",
+   "validated": true
+  },
+  "UC-T1071.001": {
+   "id": "UC-T1071.001",
+   "log_source": "network",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1071.001"
+   ],
+   "title": "Application Layer Protocol: Web Protocols",
+   "validated": true
+  },
+  "UC-T1204.002": {
+   "id": "UC-T1204.002",
+   "log_source": "endpoint_process",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1204.002"
+   ],
+   "title": "User Execution: Malicious File",
+   "validated": true
+  },
+  "WL-user01": {
+   "expires_days": 90,
+   "id": "WL-user01",
+   "log_source": "cloud_signin",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1078.004"
+   ],
+   "title": "Exposure watchlist: unusual sign-in for user01@example-bank.test",
+   "validated": true
+  },
+  "WL-user02": {
+   "expires_days": 90,
+   "id": "WL-user02",
+   "log_source": "cloud_signin",
+   "owner": "detection-engineering",
+   "status": "active",
+   "techniques": [
+    "T1078.004"
+   ],
+   "title": "Exposure watchlist: unusual sign-in for user02@example-bank.test",
+   "validated": true
+  }
+ },
+ "proposals": {
+  "PR-001": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1078.004",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "cloud_signin",
+     "ok": true
+    },
+    {
+     "check": "expiry_set",
+     "detail": "90 days",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-001",
+   "key": "watch:user01@example-bank.test",
+   "kind": "watchlist",
+   "reason": "Account seen in leak-site tracker (sample) on 2026-10-14; watch its sign-ins until reset.",
+   "status": "merged",
+   "trigger_event": 9,
+   "use_case": {
+    "expires_days": 90,
+    "id": "WL-user01",
+    "log_source": "cloud_signin",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1078.004"
+    ],
+    "title": "Exposure watchlist: unusual sign-in for user01@example-bank.test"
+   },
+   "week": "week-1"
+  },
+  "PR-002": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1566.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-002",
+   "key": "fix:UC-003:missing_log_source",
+   "kind": "fix",
+   "reason": "needs 'email_gateway', which is not collected. Proposed: pause until the log source is onboarded",
+   "status": "merged",
+   "trigger_event": 10,
+   "use_case": {
+    "id": "UC-003",
+    "log_source": "email_gateway",
+    "owner": "detection-engineering",
+    "status": "paused",
+    "techniques": [
+     "T1566.001"
+    ],
+    "title": "Phishing attachment use case",
+    "validated": true
+   },
+   "week": "week-1"
+  },
+  "PR-003": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1685",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-003",
+   "key": "fix:UC-005:stale_technique",
+   "kind": "fix",
+   "reason": "T1562.001 not in ATT&CK v20.0. Proposed: remap T1562.001 -> T1685",
+   "status": "merged",
+   "trigger_event": 11,
+   "use_case": {
+    "id": "UC-005",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1685"
+    ],
+    "title": "Security tool tampering use case",
+    "validated": true
+   },
+   "week": "week-1"
+  },
+  "PR-004": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1021.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "authentication",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-004",
+   "key": "fix:UC-006:no_owner",
+   "kind": "fix",
+   "reason": "no owner set. Proposed: assign owner detection-engineering",
+   "status": "merged",
+   "trigger_event": 12,
+   "use_case": {
+    "id": "UC-006",
+    "log_source": "authentication",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1021.001"
+    ],
+    "title": "Remote desktop use case",
+    "validated": true
+   },
+   "week": "week-1"
+  },
+  "PR-005": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1059.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "exclusion_is_narrow",
+     "detail": "2 fields (minimum 2)",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "exclusion": {
+    "account": "svc_backup",
+    "host": "SRV-BKP01"
+   },
+   "id": "PR-005",
+   "key": "tune:UC-001:account=svc_backup,host=SRV-BKP01",
+   "kind": "tuning",
+   "reason": "412 alerts in 7 days, 94% closed as false positive; 91% come from one pattern (account=svc_backup, host=SRV-BKP01). Expected after exclusion: about 37 alerts.",
+   "status": "merged",
+   "trigger_event": 13,
+   "use_case": {
+    "exclusions": [
+     {
+      "account": "svc_backup",
+      "host": "SRV-BKP01"
+     }
+    ],
+    "id": "UC-001",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1059.001"
+    ],
+    "title": "PowerShell use case",
+    "validated": true
+   },
+   "week": "week-1"
+  },
+  "PR-006": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1082",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "exclusion_is_narrow",
+     "detail": "1 fields (minimum 2)",
+     "ok": false
+    }
+   ],
+   "exclusion": {
+    "process": "monitor-agent.exe"
+   },
+   "id": "PR-006",
+   "key": "tune:UC-004:process=monitor-agent.exe",
+   "kind": "tuning",
+   "reason": "80 alerts in 7 days, 85% closed as false positive; 80% come from one pattern (process=monitor-agent.exe). Expected after exclusion: about 16 alerts.",
+   "status": "failed",
+   "trigger_event": 14,
+   "use_case": {
+    "exclusions": [
+     {
+      "process": "monitor-agent.exe"
+     }
+    ],
+    "id": "UC-004",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1082"
+    ],
+    "title": "System discovery use case",
+    "validated": true
+   },
+   "week": "week-1"
+  },
+  "PR-007": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1003.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-007",
+   "key": "new:T1003.001",
+   "kind": "new_use_case",
+   "reason": "T1003.001 (OS Credential Dumping: LSASS Memory) has no validated use case. Trigger: intel intel-001: Placeholder advisory: activity against GCC banks. Used by: OilRig, MuddyWater, APT33, APT39. Priority high.",
+   "status": "merged",
+   "technique": "T1003.001",
+   "trigger_event": 15,
+   "use_case": {
+    "id": "UC-T1003.001",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1003.001"
+    ],
+    "title": "OS Credential Dumping: LSASS Memory"
+   },
+   "week": "week-1"
+  },
+  "PR-008": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1071.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "network",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-008",
+   "key": "new:T1071.001",
+   "kind": "new_use_case",
+   "reason": "T1071.001 (Application Layer Protocol: Web Protocols) has no validated use case. Trigger: intel intel-001: Placeholder advisory: activity against GCC banks. Used by: OilRig, MuddyWater, APT33, APT39. Priority high.",
+   "status": "merged",
+   "technique": "T1071.001",
+   "trigger_event": 16,
+   "use_case": {
+    "id": "UC-T1071.001",
+    "log_source": "network",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1071.001"
+    ],
+    "title": "Application Layer Protocol: Web Protocols"
+   },
+   "week": "week-1"
+  },
+  "PR-009": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1105",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "network",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "Already alerted by the EDR; a SIEM use case would duplicate it",
+   "id": "PR-009",
+   "key": "new:T1105",
+   "kind": "new_use_case",
+   "reason": "T1105 (Ingress Tool Transfer) has no validated use case. Trigger: intel intel-001: Placeholder advisory: activity against GCC banks. Used by: OilRig, MuddyWater, APT33, APT39. Priority high.",
+   "status": "rejected",
+   "technique": "T1105",
+   "trigger_event": 17,
+   "use_case": {
+    "id": "UC-T1105",
+    "log_source": "network",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1105"
+    ],
+    "title": "Ingress Tool Transfer"
+   },
+   "week": "week-1"
+  },
+  "PR-010": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1547.001",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "UC-010",
+     "ok": false
+    }
+   ],
+   "id": "PR-010",
+   "key": "new:T1547.001",
+   "kind": "new_use_case",
+   "reason": "T1547.001 (Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder) has no validated use case. Trigger: intel intel-001: Placeholder advisory: activity against GCC banks. Used by: MuddyWater, APT33, APT39. Priority high.",
+   "status": "failed",
+   "technique": "T1547.001",
+   "trigger_event": 20,
+   "use_case": {
+    "id": "UC-T1547.001",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1547.001"
+    ],
+    "title": "Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder"
+   },
+   "week": "week-1"
+  },
+  "PR-011": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1078.004",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "cloud_signin",
+     "ok": true
+    },
+    {
+     "check": "expiry_set",
+     "detail": "90 days",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-011",
+   "key": "watch:user02@example-bank.test",
+   "kind": "watchlist",
+   "reason": "Account seen in leak-site tracker (sample) on 2026-10-19; watch its sign-ins until reset.",
+   "status": "merged",
+   "trigger_event": 63,
+   "use_case": {
+    "expires_days": 90,
+    "id": "WL-user02",
+    "log_source": "cloud_signin",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1078.004"
+    ],
+    "title": "Exposure watchlist: unusual sign-in for user02@example-bank.test"
+   },
+   "week": "week-2"
+  },
+  "PR-012": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1082",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "exclusion_is_narrow",
+     "detail": "2 fields (minimum 2)",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "exclusion": {
+    "host": "SRV-MON01",
+    "process": "monitor-agent.exe"
+   },
+   "id": "PR-012",
+   "key": "tune:UC-004:host=SRV-MON01,process=monitor-agent.exe",
+   "kind": "tuning",
+   "reason": "78 alerts in 7 days, 84% closed as false positive; 80% come from one pattern (host=SRV-MON01, process=monitor-agent.exe). Expected after exclusion: about 16 alerts.",
+   "status": "merged",
+   "trigger_event": 64,
+   "use_case": {
+    "exclusions": [
+     {
+      "host": "SRV-MON01",
+      "process": "monitor-agent.exe"
+     }
+    ],
+    "id": "UC-004",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1082"
+    ],
+    "title": "System discovery use case",
+    "validated": true
+   },
+   "week": "week-2"
+  },
+  "PR-013": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1204.002",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-013",
+   "key": "new:T1204.002",
+   "kind": "new_use_case",
+   "reason": "T1204.002 (User Execution: Malicious File) has no validated use case. Trigger: intel intel-004: Placeholder advisory: new activity against GCC financial sector. Used by: OilRig, MuddyWater, APT33, APT39. Priority high.",
+   "status": "merged",
+   "technique": "T1204.002",
+   "trigger_event": 66,
+   "use_case": {
+    "id": "UC-T1204.002",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1204.002"
+    ],
+    "title": "User Execution: Malicious File"
+   },
+   "week": "week-2"
+  },
+  "PR-014": {
+   "checks": [
+    {
+     "check": "techniques_valid",
+     "detail": "T1059.005",
+     "ok": true
+    },
+    {
+     "check": "owner_set",
+     "detail": "",
+     "ok": true
+    },
+    {
+     "check": "log_source_collected",
+     "detail": "endpoint_process",
+     "ok": true
+    },
+    {
+     "check": "no_duplicate",
+     "detail": "",
+     "ok": true
+    }
+   ],
+   "decision_reason": "approved",
+   "id": "PR-014",
+   "key": "new:T1059.005",
+   "kind": "new_use_case",
+   "reason": "T1059.005 (Command and Scripting Interpreter: Visual Basic) has no validated use case. Trigger: intel intel-004: Placeholder advisory: new activity against GCC financial sector. Used by: OilRig, MuddyWater, APT33, APT39. Priority high.",
+   "status": "merged",
+   "technique": "T1059.005",
+   "trigger_event": 67,
+   "use_case": {
+    "id": "UC-T1059.005",
+    "log_source": "endpoint_process",
+    "owner": "detection-engineering",
+    "status": "active",
+    "techniques": [
+     "T1059.005"
+    ],
+    "title": "Command and Scripting Interpreter: Visual Basic"
+   },
+   "week": "week-2"
+  }
+ },
+ "review_mode": "auto",
+ "week": "week-2"
+}

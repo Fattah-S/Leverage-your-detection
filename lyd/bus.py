@@ -26,7 +26,8 @@ class Event:
 
 class EventBus:
     def __init__(self, path: str | Path = ":memory:"):
-        self.db = sqlite3.connect(str(path))
+        # The dashboard serves requests on worker threads; access is serialised by its lock.
+        self.db = sqlite3.connect(str(path), check_same_thread=False)
         self.db.execute(
             """CREATE TABLE IF NOT EXISTS events (
                    id INTEGER PRIMARY KEY AUTOINCREMENT,

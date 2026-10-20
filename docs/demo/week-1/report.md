@@ -30,6 +30,7 @@ Coverage of priority techniques moved from 6.0% to 8.2%. 7 proposals merged, 1 r
 | `proposal_opened` | 10 |
 | `validation_passed` | 8 |
 | `validation_failed` | 2 |
+| `review_requested` | 0 |
 | `rule_merged` | 7 |
 | `proposal_rejected` | 1 |
 | `skipped_previously_rejected` | 0 |

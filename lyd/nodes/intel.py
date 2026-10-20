@@ -32,6 +32,7 @@ class ThreatIntelNode(Node):
         out: Emit = []
         threshold = ctx.profile.get("relevance_threshold", 60)
         for item in ctx.intel_inbox:
+            ctx.intel_seen.append({"week": ctx.week, **item})
             if item.get("type") == "exposure":
                 out.append(("exposure", {"intel_id": item["id"], "account": item["account"],
                                          "source": item["source"], "seen": item["seen"]}))

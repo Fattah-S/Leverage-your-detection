@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from lyd.__main__ import ROOT, build, load_json, run_week
+from lyd.platform import ROOT, Platform, load_json
 from lyd.llm import MockLLM, OllamaLLM
 
 
@@ -12,10 +12,11 @@ class FlowTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.TemporaryDirectory()
-        cls.bus, cls.ctx, cls.orch = build(Path(cls.tmp.name) / "out", MockLLM())
+        cls.p = Platform(Path(cls.tmp.name) / "out", MockLLM(), fresh=True, review_mode="auto")
+        cls.bus, cls.ctx, cls.orch = cls.p.bus, cls.p.ctx, cls.p.orch
         intel = load_json(ROOT / "samples" / "intel.json")
         stats = load_json(ROOT / "samples" / "alert_stats.json")
-        cls.weeks = [run_week(cls.bus, cls.ctx, cls.orch, w, intel[w], stats[w]) for w in ("week-1", "week-2")]
+        cls.weeks = [cls.p.run_week(w, intel[w], stats[w]) for w in ("week-1", "week-2")]
         cls.events = cls.bus.all()
 
     @classmethod

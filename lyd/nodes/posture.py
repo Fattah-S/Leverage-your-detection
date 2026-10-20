@@ -68,18 +68,19 @@ def report_markdown(ctx: Context, week: str, before: dict, after: dict, events: 
              "## Agent activity", "",
              "| Event | Count |", "| --- | --- |"]
     for t in ["new_ttp", "intel_ignored", "exposure", "gap", "covered", "needs_log_source", "broken_rule",
-              "noisy_rule", "proposal_opened", "validation_passed", "validation_failed", "rule_merged",
-              "proposal_rejected", "skipped_previously_rejected"]:
+              "noisy_rule", "proposal_opened", "validation_passed", "validation_failed", "review_requested",
+              "rule_merged", "proposal_rejected", "skipped_previously_rejected"]:
         lines.append(f"| `{t}` | {count(t)} |")
     lines += ["", "## Proposals (pull requests)", "",
               "| ID | Kind | Use case | Status | Reason |", "| --- | --- | --- | --- | --- |"]
     for p in props:
         reason = p["reason"].replace("|", "/")
         if p["status"] == "rejected":
-            reason = f"Rejected: {ctx.review_policy['reject'][p['key']]}"
+            reason = f"Rejected: {p.get('decision_reason', '')}"
         elif p["status"] == "failed":
             reason = "Failed checks: " + ", ".join(c["check"] for c in p["checks"] if not c["ok"])
-        lines.append(f"| {p['id']} | {p['kind']} | {p['use_case']['id']} | {p['status']} | {reason} |")
+        status = "awaiting review" if p["status"] == "awaiting_review" else p["status"]
+        lines.append(f"| {p['id']} | {p['kind']} | {p['use_case']['id']} | {status} | {reason} |")
     skipped = [e for e in events if e["type"] == "skipped_previously_rejected"]
     if skipped:
         lines += ["", "## Not proposed again (rejected before)", ""]

@@ -21,6 +21,8 @@ class Context:
     memory: Memory
     llm: Any
     week: str = "week-1"
+    review_mode: str = "auto"           # "auto": review policy decides; "manual": wait for an engineer
+    intel_seen: list[dict] = field(default_factory=list)
     proposals: dict[str, dict] = field(default_factory=dict)
     coverage_history: list[dict] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
