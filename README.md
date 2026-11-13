@@ -266,6 +266,10 @@ Each week's results and every engineer decision (merged or rejected, with the re
 
 MITRE ATT&CK® is a registered trademark of The MITRE Corporation. ATT&CK data is from [mitre/cti](https://github.com/mitre/cti) and used under the [ATT&CK Terms of Use](https://attack.mitre.org/resources/legal-and-branding/terms-of-use/). DeTT&CT, ATT&CK Navigator, Sigma, pySigma, MISP and Ollama are independent open-source projects.
 
+## License
+
+The code is released under the [MIT License](LICENSE). The ATT&CK data in `data/attack/` remains under MITRE's ATT&CK Terms of Use (see Attribution).
+
 ## Author
 
 Mohamed Abdelfattah ([Fattah-S](https://github.com/Fattah-S))
