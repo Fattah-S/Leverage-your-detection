@@ -1,16 +1,16 @@
 # Leverage your detection: prototype design
 
-Status: design stage · October 2026
+Status: prototype built; the README lists what runs today. This document is the target design (October 2026).
 
 ## Why a prototype first
 
-The prototype tests whether the idea works on public and synthetic data, before any client or money is involved. If it passes its exit criteria, the next step is an MVP with pilot SOCs; if not, the scope is narrowed or the idea stopped after weeks, not months.
+The prototype tests whether the idea works on public and synthetic data. If it passes its exit criteria, the next step is an MVP on a real SOC's rules and data; if not, the scope is narrowed or the idea stopped after weeks, not months.
 
 | Stage | Question it answers | Who uses it |
 | --- | --- | --- |
 | Prototype | Does the full loop work end to end? | The author, on public and synthetic data |
-| MVP | Will a real SOC use it and pay? | 1-3 pilot SOCs or MSSPs |
-| Product | Can it scale and sell repeatedly? | Many clients |
+| MVP | Does it hold up on a real SOC's rules and data? | 1-3 pilot SOCs or MSSPs |
+| Product | Does it run across many organisations? | Many SOCs |
 
 ## Problem and value
 
@@ -133,26 +133,17 @@ Each week's results and every engineer decision with its reason go into the RAG 
 | Threat intel | MITRE ATT&CK, MISP, advisories, leak-site trackers | Free, standard formats |
 | Code and rules | Git + CI (GitHub Actions or GitLab CI) | Detection-as-Code |
 
-## Market positioning
-
-The problem is proven and the category is crowded (CardinalOps, Anvilogic, SOC Prime, Prophet AI, Intezer, AiStrike, Cymulate). The angle: sovereign, MSSP-ready AI detection engineering for Gulf SOCs: on-prem open-source model, any SIEM via Sigma, regional threat intel, priced for mid-size teams. Go-to-market: start as a service ("coverage assessment + gap closure in 30 days") powered by the tool, then sell the tool as a product once the flow is repeatable.
-
 ## Risks and mitigations
 
 | Risk | Mitigation |
 | --- | --- |
-| Client onboarding takes weeks (field mappings, parsers, missing logs) | Sell onboarding as a fixed 2-4 week service |
+| Onboarding takes weeks (field mappings, parsers, missing logs) | Plan onboarding as a fixed 2-4 week phase |
 | LLM drafts wrong or noisy rules | Mandatory tests + human approval; never auto-deploy |
 | Threat intel floods engineers | Relevance scoring; only high scores notify |
 | Prompt injection via intel reports | Treat intel as untrusted data; review every output |
-| Well-funded competitors | Focus on Gulf, on-prem, MSSPs, mid-size price point |
-| Employer IP and conflict of interest | Check the employment contract; own time and hardware; no employer or client data |
 | Client data handling | On-prem deployment; data never leaves the client |
 
 ## Open questions
 
 - Which open-source model, and what hardware for local testing?
 - Which threat intel feeds are free and relevant to the Gulf?
-- Solo build, or a co-founder for engineering or sales?
-- Which SOCs or MSSPs could review a prototype demo?
-- Pricing model: per tenant, per data source, or detection packs?

@@ -172,6 +172,8 @@ A team of specialist AI agents ("nodes") works alongside detection engineers. Th
 | Validation | Runs in CI on every change: lint, conversion, replay tests | Pass / fail on the pull request |
 | Posture | Rolls coverage, health and noise into one maturity score and trend | Weekly report, monthly use-case advisory |
 
+Engineer review is the eighth agent in the code: it records each approval or rejection with its reason, so a rejected proposal is not raised again.
+
 In every node, **code does what must be exact** (counts, scores, tests) and **the LLM does what needs reading, reasoning or writing**. The AI never "proves" its own work: deterministic tests do.
 
 ## How the nodes connect
